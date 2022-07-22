@@ -21,8 +21,9 @@ aws_session_token     = this will be updated by refreshment
 [base]
 aws_access_key_id     = SET_THIS_!!!!_REPLACE_WITH_THE_ACCESS_KEY_ID_YOU_GOT_FROM_AWS
 aws_secret_access_key = SET_THIS_!!!!_REPLACE_WITH_YOUR_SECRET_KEY_GENERATED_BY_AWS
-``
+```
 
+Then to use the tool, run this (setting the `YOUR_AWS_ACCOUNT_ID`, `AWS_MFA_NAME`, and `MFA_TOKEN` variables, of course):
 
 ```sh
 AWS_PROFILE=base refreshment -m "arn:aws:iam::${YOUR_AWS_ACCOUNT_ID}:mfa/${AWS_MFA_NAME}" -t "${MFA_TOKEN}"
