@@ -9,6 +9,21 @@ This automates the process of using
 
 In `~/.aws/credentials` we care about two sets of credentials. There's the `[default]` which gets updated by this tool, and a `[base]` which actually has permissions to request new credentials from `sts`.
 
+Here's an example of what your `~/.aws/credentials` should look like:
+
+```sh
+❯ cat ~/.aws/credentials                                                                                                                                  
+[default]
+aws_access_key_id     = this will be updated by refreshment, and is the profile that will be used to make normal aws requests
+aws_secret_access_key = this will be updated by refreshment
+aws_session_token     = this will be updated by refreshment
+
+[base]
+aws_access_key_id     = SET_THIS_!!!!_REPLACE_WITH_THE_ACCESS_KEY_ID_YOU_GOT_FROM_AWS
+aws_secret_access_key = SET_THIS_!!!!_REPLACE_WITH_YOUR_SECRET_KEY_GENERATED_BY_AWS
+``
+
+
 ```sh
 AWS_PROFILE=base refreshment -m "arn:aws:iam::${YOUR_AWS_ACCOUNT_ID}:mfa/${AWS_MFA_NAME}" -t "${MFA_TOKEN}"
 ```
