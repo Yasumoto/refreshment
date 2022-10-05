@@ -91,7 +91,7 @@ auth device. It will update your default profile in
 				Credentials: existing_credentials})))
 			get_caller_identity_input := &sts.GetCallerIdentityInput{}
 			_, err := existing_service.GetCallerIdentity(get_caller_identity_input)
-			if err != nil {
+			if err == nil {
 				l.Println("Existing credentials are valid, updating default!")
 				cfg.Section("default").Key("aws_access_key_id").SetValue(access_key_id)
 				cfg.Section("default").Key("aws_secret_access_key").SetValue(secret_access_key)
