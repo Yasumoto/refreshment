@@ -93,9 +93,13 @@ auth device. It will update your default profile in
 			_, err := existing_service.GetCallerIdentity(get_caller_identity_input)
 			if err == nil {
 				l.Println("Existing credentials are valid, updating default!")
-				cfg.Section("default").Key("aws_access_key_id").SetValue(access_key_id)
-				cfg.Section("default").Key("aws_secret_access_key").SetValue(secret_access_key)
-				cfg.Section("default").Key("aws_session_token").SetValue(session_token)
+				section_name := "default"
+				if profile_name == "refreshment_mfa" {
+					section_name = "nlk_corp"
+				}
+				cfg.Section(section_name).Key("aws_access_key_id").SetValue(access_key_id)
+				cfg.Section(section_name).Key("aws_secret_access_key").SetValue(secret_access_key)
+				cfg.Section(section_name).Key("aws_session_token").SetValue(session_token)
 
 				cfg.SaveTo(credential_file_path)
 
