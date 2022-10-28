@@ -137,7 +137,7 @@ auth device. It will update your default profile in
 				}
 				return
 			}
-			for _, profile_name := range []string{"default", "refreshment_mfa"} {
+			for _, profile_name := range []string{"nlk_corp", "refreshment_mfa"} {
 				cfg.Section(profile_name).Key("aws_access_key_id").SetValue(*result.Credentials.AccessKeyId)
 				cfg.Section(profile_name).Key("aws_secret_access_key").SetValue(*result.Credentials.SecretAccessKey)
 				cfg.Section(profile_name).Key("aws_session_token").SetValue(*result.Credentials.SessionToken)
